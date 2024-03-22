@@ -21,6 +21,7 @@ export default function Navbar() {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}...
+               {/* test */}
               </Button>
             ))}
           </Box>
