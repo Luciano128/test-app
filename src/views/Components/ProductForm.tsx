@@ -159,11 +159,11 @@ export default function ProductForm(props: IProductForm) {
         </Grid>
       </DialogContent>
 
-      <DialogActions>
-        <Button variant="contained" color="primary" onClick={() => onSave()}>
+      <DialogActions sx={{paddingRight: '12px'}}>
+        <Button variant="outlined" color="primary" onClick={() => onSave()}>
           Salva
         </Button>
-        <Button variant="contained" color="secondary" onClick={() => onClose()}>
+        <Button variant="outlined" color="secondary" onClick={() => onClose()}>
           Annulla
         </Button>
       </DialogActions>
