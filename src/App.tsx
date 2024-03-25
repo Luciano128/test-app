@@ -4,6 +4,7 @@ import { purple, grey } from "@mui/material/colors";
 import Navbar from "./views/Components/Navbar";
 import MainRoutes from "./views/MainRoutes";
 import { BrowserRouter } from "react-router-dom";
+import { MainProvider } from "./views/Contexts/MainContext";
 
 const theme = createTheme({
   palette: {
@@ -18,12 +19,14 @@ const theme = createTheme({
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Navbar />
-        <MainRoutes />
-      </ThemeProvider>
-    </BrowserRouter>
+    <MainProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Navbar />
+          <MainRoutes />
+        </ThemeProvider>
+      </BrowserRouter>
+    </MainProvider>
   );
 }
 

@@ -1,13 +1,16 @@
 import { Button, Dialog, Typography } from "@mui/material";
 import ProductForm from "./Components/ProductForm";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IProduct } from "./Models/Product";
 import ProductServices from "./Services/ProductServices";
+import { Maincontext } from "./Contexts/MainContext";
 
 export default function Products() {
   const [itemID, setItemID] = useState(0);
   const [itemShown, showItem] = useState(false);
   const [itemList, setItemList] = useState<IProduct[]>([]);
+
+  const context = useContext(Maincontext);
 
   const SVC = new ProductServices();
 
@@ -44,6 +47,9 @@ export default function Products() {
     <>
       <Typography variant="h3" gutterBottom>
         Strumenti musicali
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        {context.user.userName?? 'NON AUTENTICATO'}
       </Typography>
       <Button variant="contained" color="primary" onClick={() => onItemAdd()}>
         Aggiungi strumento
