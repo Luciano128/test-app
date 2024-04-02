@@ -8,6 +8,7 @@ import {
   Grid,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
 import ProductServices from "../Services/ProductServices";
 import React from "react";
@@ -26,6 +27,8 @@ export default function ProductForm(props: IProductForm) {
   const [imgUrlError, setImageUrlError] = useState("");
 
   const SVC = new ProductServices();
+
+  const theme = useTheme();
 
   useEffect(() => {
     props.itemID === 0 ? setItem(DefProduct) : GetItem(props.itemID);
@@ -101,7 +104,7 @@ export default function ProductForm(props: IProductForm) {
 
   return (
     <>
-      <DialogTitle>
+      <DialogTitle sx={{ backgroundColor: theme.palette.secondary.light }}>
         <Grid item xs={12} marginTop={1}>
           <Typography variant="h5">
             {item.prodName === "" ? "Nuovo prodotto" : item.prodName}
@@ -159,7 +162,12 @@ export default function ProductForm(props: IProductForm) {
         </Grid>
       </DialogContent>
 
-      <DialogActions sx={{paddingRight: '12px'}}>
+      <DialogActions
+        sx={{
+          paddingRight: "12px",
+          backgroundColor: theme.palette.secondary.light,
+        }}
+      >
         <Button variant="outlined" color="primary" onClick={() => onSave()}>
           Salva
         </Button>

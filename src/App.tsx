@@ -10,9 +10,11 @@ const theme = createTheme({
   palette: {
     primary: {
       main: purple[800],
+      light: purple[200],
     },
     secondary: {
       main: grey[800],
+      light: grey[200],
     },
   },
 });
