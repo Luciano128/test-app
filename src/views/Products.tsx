@@ -49,12 +49,12 @@ export default function Products() {
         Strumenti musicali
       </Typography>
       <Typography variant="h6" gutterBottom>
-        {context.user.userName?? 'NON AUTENTICATO'}
+        {context.user.userName ?? "NON AUTENTICATO"}
       </Typography>
       <Button variant="contained" color="primary" onClick={() => onItemAdd()}>
         Aggiungi strumento
       </Button>
-      <table style={{ width: "1080px", marginTop: "64px" }}>
+      <table style={{ width: "100%", padding: "64px" }}>
         <thead>
           <tr>
             <th>ID</th>
