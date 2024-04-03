@@ -46,11 +46,11 @@ export default function LoginForm(props: ILoginForm) {
   const IsValid = () => {
     let valid: boolean = true;
     if (credential.userName === "") {
-      setUserNameError("Il nome utente è obbligatoprio");
+      setUserNameError("Il nome utente è obbligatorio");
       valid = false;
     }
     if (credential.password === "") {
-      setPasswordError("La passowrd è obbligatopria");
+      setPasswordError("La password è obbligatoria");
       valid = false;
     }
 

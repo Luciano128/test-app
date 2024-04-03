@@ -1,5 +1,5 @@
 import {
-    Button,
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -17,7 +17,7 @@ export interface IProductCard {
 //che fa vedere il contenuto di un prodotto che già ho.
 export default function ProductCard(props: IProductCard) {
   return (
-    <Card>
+    <Card variant="outlined">
       <CardHeader title={props.product.prodName} />
       <CardMedia
         component="img"
@@ -31,7 +31,9 @@ export default function ProductCard(props: IProductCard) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button variant="contained" color="primary" fullWidth>Aggiungi al carrello</Button>
+        <Button variant="contained" color="primary" fullWidth>
+          Aggiungi al carrello
+        </Button>
       </CardActions>
     </Card>
   );
