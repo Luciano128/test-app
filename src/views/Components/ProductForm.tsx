@@ -164,11 +164,11 @@ export default function ProductForm(props: IProductForm) {
 
       <DialogActions
         sx={{
-          paddingRight: "12px",
+          paddingRight: "24px",
           backgroundColor: theme.palette.secondary.light,
         }}
       >
-        <Button variant="outlined" color="primary" onClick={() => onSave()}>
+        <Button variant="contained" color="primary" onClick={() => onSave()}>
           Salva
         </Button>
         <Button variant="outlined" color="secondary" onClick={() => onClose()}>
