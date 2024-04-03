@@ -22,6 +22,7 @@ const theme = createTheme({
 function App() {
   return (
     <MainProvider>
+      {/* BrowserRouter va messo altrimenti non funziona il componente MainRoute che sta all'interno */}
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Navbar />

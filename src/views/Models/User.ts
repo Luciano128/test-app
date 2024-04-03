@@ -39,7 +39,7 @@ const customerUser: IUser = {
   password: "bianchi",
   firstName: "Carla",
   lastName: "Bianch",
-  role: UserRoles.ADMINISTRATOR,
+  role: UserRoles.CUSTOMER,
 };
 
 export const UserList: IUser[] =

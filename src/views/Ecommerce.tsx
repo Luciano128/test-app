@@ -11,10 +11,13 @@ export default function Ecommerce() {
   const [itemList, setItemList] = useState<IProduct[]>([]);
   const [login, setLogin] = useState<boolean>(false);
 
+  //questo componente Ecommerce richiama il sevizio SVC che è come al solito quello che ci fornisce i dati.
   const SVC = new ProductServices();
 
   const context = useContext(Maincontext);
 
+
+///riga 21-23 : vuol dire che all'apertura del componente Ecommerce si apre la Lista e la mette in setItemList (riga27)
   useEffect(() => {
     GetList();
   }, []);
@@ -51,6 +54,8 @@ export default function Ecommerce() {
           Logout
         </Button>
       )}
+      {/* In questo punto il componente Ecommerce fa una griglia e dentro ogni quadrato della griglia ci mette una
+      card del prodotto ProductCard passandogli il prodotto*/}
       <Grid container spacing={2}>
         {itemList.map((item) => (
           <Grid item xs={12} md={4}>
