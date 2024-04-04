@@ -30,6 +30,11 @@ export default function ProductCard(props: IProductCard) {
           {props.product.prodDescription}
         </Typography>
       </CardContent>
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {props.product.prodPrice}
+        </Typography>
+      </CardContent>
       <CardActions disableSpacing>
         <Button variant="contained" color="primary" fullWidth>
           Aggiungi al carrello
