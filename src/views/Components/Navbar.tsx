@@ -21,6 +21,7 @@ export default function Navbar() {
           {context.user.role === UserRoles.ADMINISTRATOR &&
             <Link style= {{color:"white"}} to="/products">Gestione Prodotti</Link>
           }
+          <Link style= {{color:"white"}} to="/cart">Cart</Link>
         </Box>
       </Toolbar>
     </AppBar>

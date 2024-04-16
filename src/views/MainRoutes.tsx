@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Ecommerce from './Ecommerce';
 import Products from './Products';
+import Cart from './Cart';
 
 // La MainRoute stabilisce quali siano i percorsi che si possono fare nell'applicazione.
 // Attualmente ho 2 componenti che sono Ecommerce e Products. Come le Route stabilisco su quale componente posso andare
@@ -11,6 +12,7 @@ export default function MainRoutes() {
       <Routes>
         <Route path="/" element={<Ecommerce />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
     </Routes>
     );
 }
