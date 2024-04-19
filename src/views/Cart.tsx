@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { IProduct } from "./Models/Product";
 import CartServices from "./Services/CartService";
-import { Maincontext } from "./Contexts/MainContext";
+import { formatCurrency } from "./Services/formatCurrency";
+// import { Maincontext } from "./Contexts/MainContext";
 
 export default function Cart() {
 
@@ -43,7 +44,7 @@ export default function Cart() {
               <td>{item.prodID}</td>
               <td>{item.prodName}</td>
               <td>{item.prodDescription}</td>
-              <td>{item.prodPrice}</td>
+              <td>{formatCurrency(item.prodPrice)}</td>
               <td>
                 <img src={item.prodImageUrl} alt={item.prodName} width="100" />
               </td>

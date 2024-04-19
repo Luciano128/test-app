@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { IProduct } from "./Models/Product";
 import ProductServices from "./Services/ProductServices";
 import { Maincontext } from "./Contexts/MainContext";
+import { formatCurrency } from "./Services/formatCurrency";
 
 export default function Products() {
   const [itemID, setItemID] = useState(0);
@@ -70,7 +71,7 @@ export default function Products() {
               <td>{item.prodID}</td>
               <td>{item.prodName}</td>
               <td>{item.prodDescription}</td>
-              <td>{item.prodPrice}</td>
+              <td>{formatCurrency(item.prodPrice)}</td>
               <td>
                 <img src={item.prodImageUrl} alt={item.prodName} width="100" />
               </td>
