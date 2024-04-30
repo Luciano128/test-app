@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Maincontext } from "../Contexts/MainContext";
 import { UserRoles } from "../Models/User";
-
+import CartBadge from "./CartBadge";
 
 
 export default function Navbar() {
   const context = useContext(Maincontext);
+
 
   return (
     <AppBar position="static">
@@ -17,12 +18,17 @@ export default function Navbar() {
         <Box
           sx={{ flexGrow: 1, display: { xs: "flex", md: "flex", gap: "16px" } }}
         >
-          <Link style= {{color:"white"}} to="/">E-Commerce</Link>
-          {context.user.role === UserRoles.ADMINISTRATOR &&
-            <Link style= {{color:"white"}} to="/products">Gestione Prodotti</Link>
-          }
-          <Link style= {{color:"white"}} to="/cart">Cart</Link>
+          <Link style={{ color: "white" }} to="/">
+            E-Commerce
+          </Link>
+          {context.user.role === UserRoles.ADMINISTRATOR && (
+            <Link style={{ color: "white" }} to="/products">
+              Gestione Prodotti
+            </Link>
+          )}
+
         </Box>
+        <CartBadge></CartBadge>
       </Toolbar>
     </AppBar>
   );

@@ -8,8 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import { IProduct } from "../Models/Product";
-import CartServices from "../Services/CartService";
+
 import { formatCurrency } from "../Services/formatCurrency";
+import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 
 export interface IProductCard {
   product: IProduct;
@@ -18,11 +19,7 @@ export interface IProductCard {
 //In questo modo, passo il prodotto già pronto all'interno della ProductCard. Cioò la ProductCard è solo un componente
 //che fa vedere il contenuto di un prodotto che già ho.
 export default function ProductCard(props: IProductCard) {
-  const SVC = new CartServices();
-  const handleClick = () => {
-    SVC.AddToCart(props.product);
-  };
-
+  const { increaseCartQuantity } = useShoppingCart();
   return (
     <Card variant="outlined">
       <CardHeader title={props.product.prodName} />
@@ -47,7 +44,7 @@ export default function ProductCard(props: IProductCard) {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={handleClick}
+          onClick={() => increaseCartQuantity(props.product.prodID)}
         >
           Aggiungi al carrello
         </Button>

@@ -5,6 +5,7 @@ import Navbar from "./views/Components/Navbar";
 import MainRoutes from "./views/MainRoutes";
 import { BrowserRouter } from "react-router-dom";
 import { MainProvider } from "./views/Contexts/MainContext";
+import { ShoppingCartProvider } from "./views/Contexts/ShoppingCartContext";
 
 const theme = createTheme({
   palette: {
@@ -21,15 +22,17 @@ const theme = createTheme({
 
 function App() {
   return (
-    <MainProvider>
-      {/* BrowserRouter va messo altrimenti non funziona il componente MainRoute che sta all'interno */}
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Navbar />
-          <MainRoutes />
-        </ThemeProvider>
-      </BrowserRouter>
-    </MainProvider>
+    <ShoppingCartProvider>
+      <MainProvider>
+        {/* BrowserRouter va messo altrimenti non funziona il componente MainRoute che sta all'interno */}
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <Navbar />
+            <MainRoutes />
+          </ThemeProvider>
+        </BrowserRouter>
+      </MainProvider>
+    </ShoppingCartProvider>
   );
 }
 
