@@ -19,7 +19,7 @@ export interface IProductCard {
 //In questo modo, passo il prodotto già pronto all'interno della ProductCard. Cioò la ProductCard è solo un componente
 //che fa vedere il contenuto di un prodotto che già ho.
 export default function ProductCard(props: IProductCard) {
-  const { increaseCartQuantity } = useShoppingCart();
+  const { removeCartQuantity, increaseCartQuantity } = useShoppingCart();
   return (
     <Card variant="outlined">
       <CardHeader title={props.product.prodName} />
@@ -39,7 +39,15 @@ export default function ProductCard(props: IProductCard) {
           {formatCurrency(props.product.prodPrice)}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions>
+      <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={() => removeCartQuantity(props.product.prodID)}
+        >
+          Remove
+        </Button>
         <Button
           variant="contained"
           color="primary"
