@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardMedia,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { IProduct } from "../Models/Product";
 
@@ -19,8 +20,14 @@ export interface IProductCard {
 //In questo modo, passo il prodotto già pronto all'interno della ProductCard. Cioò la ProductCard è solo un componente
 //che fa vedere il contenuto di un prodotto che già ho.
 export default function ProductCard(props: IProductCard) {
-  const { removeCartQuantity, increaseCartQuantity, decreaseCartQuantity } =
-    useShoppingCart();
+  const {
+    getItemQuantity,
+    removeCartQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+  } = useShoppingCart();
+  const quantity = getItemQuantity(props.product.prodID);
+  const theme = useTheme();
   return (
     <Card variant="outlined">
       <CardHeader title={props.product.prodName} />
@@ -40,7 +47,7 @@ export default function ProductCard(props: IProductCard) {
           {formatCurrency(props.product.prodPrice)}
         </Typography>
       </CardContent>
-      <CardContent style={{paddingBottom:"0"}}>
+      <CardContent style={{ paddingBottom: "0" }}>
         <CardActions>
           <Button
             variant="contained"
@@ -48,24 +55,25 @@ export default function ProductCard(props: IProductCard) {
             fullWidth
             onClick={() => increaseCartQuantity(props.product.prodID)}
           >
-            Aggiungi al carrello
+            Add
           </Button>
         </CardActions>
       </CardContent>
-      <CardContent style={{paddingTop:"0"}}>
+      <CardContent style={{ paddingTop: "0" }}>
         <CardActions>
           <Button
             variant="contained"
-            color="secondary"
+            sx={{ backgroundColor: theme.palette.primary.light }}
             fullWidth
             onClick={() => removeCartQuantity(props.product.prodID)}
           >
             Remove
           </Button>
+          <Typography width={"20rem"}>Quantity: {quantity}</Typography>
           <Button
             variant="contained"
             fullWidth
-            color="secondary"
+            sx={{ backgroundColor: theme.palette.primary.light }}
             onClick={() => decreaseCartQuantity(props.product.prodID)}
           >
             Decrease

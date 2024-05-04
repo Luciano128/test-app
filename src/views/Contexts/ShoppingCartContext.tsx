@@ -8,6 +8,7 @@ type ShoppingCartProvidersProps = {
 type ShoppingCartContext = {
   cartQuantity: number;
   cartItems: CartItem[];
+  getItemQuantity: (id: number) => number;
   removeCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   increaseCartQuantity: (id: number) => void;
@@ -33,6 +34,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvidersProps) {
     (quantity, item) => item.quantity + quantity,
     0
   );
+  function getItemQuantity(id: number) {
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  }
 
   function increaseCartQuantity(id: number) {
     setCartItems((currItems) => {
@@ -73,7 +77,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvidersProps) {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ removeCartQuantity,decreaseCartQuantity, increaseCartQuantity, cartItems, cartQuantity }}
+      value={{ getItemQuantity, removeCartQuantity,decreaseCartQuantity, increaseCartQuantity, cartItems, cartQuantity }}
     >
       {children}
     </ShoppingCartContext.Provider>
