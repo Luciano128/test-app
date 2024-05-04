@@ -9,6 +9,7 @@ type ShoppingCartContext = {
   cartQuantity: number;
   cartItems: CartItem[];
   removeCartQuantity: (id: number) => void;
+  decreaseCartQuantity: (id: number) => void;
   increaseCartQuantity: (id: number) => void;
 };
 
@@ -48,6 +49,22 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvidersProps) {
       }
     });
   }
+
+  function decreaseCartQuantity(id: number) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
   function removeCartQuantity(id: number) {
     setCartItems((currItems) => {
       return currItems.filter((item) => item.id !== id);
@@ -56,7 +73,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvidersProps) {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ removeCartQuantity, increaseCartQuantity, cartItems, cartQuantity }}
+      value={{ removeCartQuantity,decreaseCartQuantity, increaseCartQuantity, cartItems, cartQuantity }}
     >
       {children}
     </ShoppingCartContext.Provider>
