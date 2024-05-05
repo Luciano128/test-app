@@ -62,8 +62,8 @@ export default function ProductCard(props: IProductCard) {
       <CardContent style={{ paddingTop: "0" }}>
         <CardActions>
           <Button
-            variant="contained"
-            sx={{ backgroundColor: theme.palette.primary.light }}
+            variant="outlined"
+            // sx={{ backgroundColor: theme.palette.primary.light }}
             fullWidth
             onClick={() => removeCartQuantity(props.product.prodID)}
           >
